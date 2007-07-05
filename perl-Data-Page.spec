@@ -1,7 +1,7 @@
 %define module Data-Page
 %define name perl-%module
 %define version 2.00
-%define release %mkrel 3
+%define release %mkrel 4
 
 Name:		%name
 Version:	%version
@@ -14,7 +14,7 @@ Source:		http://www.cpan.org/modules/by-module/Data/%module-%version.tar.bz2
 BuildRequires:	perl-devel
 BuildRequires:  perl(Class::Accessor::Chained)
 BuildRequires:  perl(Test::Exception)
-BuildRequires:  perl(Class::Accessor::Chained::Fast)
+Requires:       perl(Class::Accessor::Chained::Fast)
 BuildArch:	noarch
 Buildroot:	%_tmppath/%name-%version
 
