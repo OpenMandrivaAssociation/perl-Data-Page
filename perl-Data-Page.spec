@@ -1,21 +1,22 @@
-%define realname Data-Page
-%define name perl-%realname
+%define module Data-Page
+%define name perl-%module
 %define version 2.00
-%define release %mkrel 2
+%define release %mkrel 3
 
-Summary:	Help when paging through sets of results
 Name:		%name
 Version:	%version
 Release:	%release
+Summary:	Help when paging through sets of results
 License:	Artistic/GPL
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%realname/
-Source:		http://www.cpan.org/modules/by-module/Data/%realname-%version.tar.bz2
+URL:		http://search.cpan.org/dist/%module/
+Source:		http://www.cpan.org/modules/by-module/Data/%module-%version.tar.bz2
 BuildRequires:	perl-devel
 BuildRequires:  perl(Class::Accessor::Chained)
 BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Class::Accessor::Chained::Fast)
 BuildArch:	noarch
-Buildroot:	%_tmppath/%name-root
+Buildroot:	%_tmppath/%name-%version
 
 %description
 When searching through large amounts of data, it is often the case
@@ -30,7 +31,7 @@ call methods to find out how many pages of information there are, and
 what number the first and last entries on the current page really are.
 
 %prep
-%setup -q -n %realname-%version
+%setup -q -n %module-%version
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -40,7 +41,7 @@ what number the first and last entries on the current page really are.
 make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 %files
@@ -50,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %_mandir/*/*
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 
 
