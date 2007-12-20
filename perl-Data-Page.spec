@@ -16,6 +16,7 @@ BuildRequires:  perl(Class::Accessor::Chained)
 BuildRequires:  perl(Test::Exception)
 Requires:       perl(Class::Accessor::Chained::Fast)
 BuildArch:	noarch
+Buildroot:	%_tmppath/%name-%version
 
 %description
 When searching through large amounts of data, it is often the case
