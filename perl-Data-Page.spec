@@ -1,7 +1,7 @@
 %define module Data-Page
 %define name perl-%module
-%define version 2.00
-%define release %mkrel 6
+%define version 2.01
+%define release %mkrel 1
 
 Name:		%name
 Version:	%version
