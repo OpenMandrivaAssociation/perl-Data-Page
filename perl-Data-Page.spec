@@ -1,22 +1,21 @@
-%define module Data-Page
-%define name perl-%module
-%define version 2.01
-%define release %mkrel 1
+%define upstream_name    Data-Page
+%define upstream_version 2.01
 
-Name:		%name
-Version:	%version
-Release:	%release
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Help when paging through sets of results
 License:	Artistic/GPL
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%module/
-Source:		http://www.cpan.org/modules/by-module/Data/%module-%version.tar.bz2
-BuildRequires:	perl-devel
+Url:		http://search.cpan.org/dist/%{upstream_name}/
+Source0:    http://www.cpan.org/modules/by-module/Data/%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildRequires:  perl(Class::Accessor::Chained)
 BuildRequires:  perl(Test::Exception)
 Requires:       perl(Class::Accessor::Chained::Fast)
 BuildArch:	noarch
-Buildroot:	%_tmppath/%name-%version
+Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 When searching through large amounts of data, it is often the case
@@ -31,7 +30,7 @@ call methods to find out how many pages of information there are, and
 what number the first and last entries on the current page really are.
 
 %prep
-%setup -q -n %module-%version
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -44,14 +43,11 @@ make test
 rm -rf %{buildroot}
 %makeinstall_std
 
+%clean
+rm -rf %{buildroot}
+
 %files
 %defattr(-,root,root)
 %doc README CHANGES
 %perl_vendorlib/Data/*
 %_mandir/*/*
-
-%clean
-rm -rf %{buildroot}
-
-
-
