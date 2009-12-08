@@ -1,5 +1,5 @@
 %define upstream_name    Data-Page
-%define upstream_version 2.01
+%define upstream_version 2.02
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
@@ -9,7 +9,7 @@ Summary:	Help when paging through sets of results
 License:	Artistic/GPL
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}/
-Source0:    http://www.cpan.org/modules/by-module/Data/%{upstream_name}-%{upstream_version}.tar.bz2
+Source0:    http://www.cpan.org/modules/by-module/Data/%{upstream_name}-%{upstream_version}.tar.gz
 
 BuildRequires:  perl(Class::Accessor::Chained)
 BuildRequires:  perl(Test::Exception)
@@ -34,10 +34,10 @@ what number the first and last entries on the current page really are.
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
-%{make}
+%make
 
 %check
-make test
+%make test
 
 %install
 rm -rf %{buildroot}
