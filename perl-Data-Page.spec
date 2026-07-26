@@ -1,15 +1,13 @@
 %define upstream_name    Data-Page
-%define upstream_version 2.02
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	2.02
+Release:	6
 
 Summary:	Help when paging through sets of results
 License:	Artistic/GPL
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}/
-Source0:	http://www.cpan.org/modules/by-module/Data/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://metacpan.org/dist/%{upstream_name}/
+Source0:	http://www.cpan.org/modules/by-module/Data/%{upstream_name}-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -31,7 +29,7 @@ call methods to find out how many pages of information there are, and
 what number the first and last entries on the current page really are.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -60,9 +58,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 
 * Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 2.10.0-1mdv2010.0
 + Revision: 406973
-- rebuild using %%perl_convert_version
-
-* Sat Oct 11 2008 Guillaume Rousse <guillomovitch@mandriva.org> 2.01-1mdv2009.1
+- rebuild using %2.02 Sat Oct 11 2008 Guillaume Rousse <guillomovitch@mandriva.org> 2.01-1mdv2009.1
 + Revision: 292074
 - update to new version 2.01
 
